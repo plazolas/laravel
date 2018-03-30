@@ -19,6 +19,10 @@ Route::group(['middleware' => ['web']], function () {
      * Show Task Dashboard
      */
     
+    Route::get('/', function () {
+        return redirect('/home');
+    })->middleware('auth');
+    
     Route::get('/tasks', function () {
         return view('tasks', [
             'tasks' => Task::orderBy('created_at', 'asc')->get()
