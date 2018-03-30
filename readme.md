@@ -1,10 +1,10 @@
-# Laravel Quickstart - Basic
+# laravel 5.2 with auth and tasks integrated
 
 ## Quck Installation
 
-    git clone https://github.com/laravel/quickstart-basic quickstart
+    git clone https://github.com/plazolas/laravel laravel
 
-    cd quickstart
+    cd laravel
 
     composer install
 
@@ -12,4 +12,3 @@
 
     php artisan serve
 
-[Complete Tutorial](https://laravel.com/docs/5.2/quickstart)
