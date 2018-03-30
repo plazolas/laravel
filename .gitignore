@@ -4,3 +4,9 @@
 Homestead.yaml
 Homestead.json
 .env
+/nbproject
+.idea
+app/Http/web.php
+public/rets_new.php
+public/test.html
+strategic.composer.json

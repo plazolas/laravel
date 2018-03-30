@@ -18,22 +18,23 @@ Route::group(['middleware' => ['web']], function () {
     /**
      * Show Task Dashboard
      */
-    Route::get('/', function () {
+    
+    Route::get('/tasks', function () {
         return view('tasks', [
             'tasks' => Task::orderBy('created_at', 'asc')->get()
         ]);
-    });
+    })->middleware('auth');
 
     /**
      * Add New Task
      */
-    Route::post('/task', function (Request $request) {
+    Route::post('/tasks/task', function (Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
         ]);
 
         if ($validator->fails()) {
-            return redirect('/')
+            return redirect('/tasks')
                 ->withInput()
                 ->withErrors($validator);
         }
@@ -42,15 +43,19 @@ Route::group(['middleware' => ['web']], function () {
         $task->name = $request->name;
         $task->save();
 
-        return redirect('/');
-    });
+        return redirect('/tasks');
+    })->middleware('auth');
 
     /**
      * Delete Task
      */
-    Route::delete('/task/{id}', function ($id) {
+    Route::delete('tasks/task/{id}', function ($id) {
         Task::findOrFail($id)->delete();
 
-        return redirect('/');
-    });
+        return redirect('/tasks');
+    })->middleware('auth');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
