@@ -1,6 +1,6 @@
-# laravel 5.2 with auth and tasks integrated
+# laravel 5.2 RealState site
 
-## Quck Installation
+## Quick Installation
 
     git clone https://github.com/plazolas/laravel laravel
 
@@ -12,3 +12,4 @@
 
     php artisan serve
 
+## Contact me when you are ready to plug in your FLEX MLS Service

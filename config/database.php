@@ -53,11 +53,23 @@ return [
         ],
 
         'mysql' => [
+            /*********** -oz
+            'driver'    => 'mysql',
+            'host'      => env('DB_HOST', 'resuelve.db.5478025.hostedresource.com'),
+            'database'  => env('DB_DATABASE', 'resuelve'),
+            'username'  => env('DB_USERNAME', 'resuleve'),
+            'password'  => env('DB_PASSWORD', 'Y6u7i8O9@'),
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+            'strict'    => false,
+            'engine'    => null,
+            ****************/
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'forge'),
-            'username'  => env('DB_USERNAME', 'forge'),
-            'password'  => env('DB_PASSWORD', ''),
+            'database'  => env('DB_DATABASE', 'homestead'),
+            'username'  => env('DB_USERNAME', 'root'),
+            'password'  => env('DB_PASSWORD', 'notmypassword'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

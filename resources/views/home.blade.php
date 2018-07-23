@@ -9,7 +9,7 @@
 
                 <div class="panel-body">
                     <div class="col-md-6"><a href="{{ url("/tasks") }}">Tasks</a></div>
-                    <div class="col-md-6">Edit Tasks</div>
+                    <div class="col-md-6"><a href="{{ url("/properties") }}">Properties</a></div>
                 </div>
             </div>
         </div>
