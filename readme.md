@@ -12,4 +12,6 @@
 
     php artisan serve
 
-## Contact me when you are ready to plug in your FLEX MLS Service
+## Contact me when you are ready to plug in your own FLEX MLS Service
+
+##  
