@@ -163,8 +163,8 @@
                         </div>
 
                     </div>
-                    <div class="text-right">Showing {{ $data['paginated']->firstItem() }} - {{ $data['paginated']->lastItem() }} of 
-                        {{ $data['paginated']->total() }}
+                    <div class="text-right">Showing {{ $data['paginated']->firstItem() }} - {{ $data['paginated']->lastItem() }} of <span id="current-max-properties"> 
+                            {{ $data['paginated']->total() }}</span>
                     </div>
                     <div class="row">{{ $data['paginated']->appends(request()->all())->links() }}</div>
                     <br>

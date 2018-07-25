@@ -1,4 +1,4 @@
-# laravel 5.2 RealState site
+# Laravel 5.2 realstate Site out of the Box
 
 ## Quick Installation
 
@@ -12,6 +12,12 @@
 
     php artisan serve
 
-## Contact me when you are ready to plug in your own FLEX MLS Service
+## Demo Website : 
 
-##  
+    <a href="http://abrelamente.com/laravel/public">Waltz Realty</a>
+
+## Contact me when you are ready to:
+
+    Integrate FLEX MLS or other real state service account in real time.
+
+    Capture leads into your favorite CRM (Customer Relations Management) System.

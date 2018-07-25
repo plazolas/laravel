@@ -1,5 +1,4 @@
 <?php
-
 use App\Task;
 use App\User;
 
@@ -7,14 +6,12 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ExampleTest extends TestCase
+class TasksTest extends TestCase
 {
     protected $user;
-
     public function __construct() {
         
     }
-
     public function test_home_and_task_pages_access()
     {
         $this->visit('/')->see('Waltz Realty');
@@ -34,14 +31,15 @@ class ExampleTest extends TestCase
         $this->user = factory(App\User::class)->make();
         
         //factory(Task::class)->create(['name' => 'Task 96']);
+        $newTask = str_random(3);
+        
         $this->actingAs($this->user)
             ->withSession(['foo' => 'bar'])
             ->visit('/tasks')
-            ->type('Task 96', 'name')
+            ->type('Task '.$newTask, 'name')
             ->press('add-task')
-            ->see('Task 96')
-            ->seeInDatabase('tasks', [ 'name' => 'Task 96']);
-
+            ->see('Task '.$newTask)
+            ->seeInDatabase('tasks', [ 'name' => 'Task '.$newTask]);
     }
     
     public function test_long_tasks_cant_be_created()
@@ -49,11 +47,12 @@ class ExampleTest extends TestCase
         $this->user = factory(App\User::class)->make();
         
         $bogus_task = str_random(300);
+        echo $bogus_task;
         
         $this->actingAs($this->user)
             ->withSession(['foo' => 'bar'])
             ->visit('/tasks')
-            ->type(str_random(300), 'name')
+            ->type($bogus_task, 'name')
             ->press('add-task')
             ->dontSee($bogus_task);
     }
@@ -63,16 +62,16 @@ class ExampleTest extends TestCase
         
         $this->user = factory(App\User::class)->make();
         
-        $toDeleted = Task::latest()->first();
+        $toDelete = Task::latest()->first();
+        
+        echo "toDelete task id: ".$toDelete->id; 
         
         $this->actingAs($this->user)
             ->withSession(['foo' => 'bar'])
             ->visit('/tasks')
             ->see($toDelete->name)
             ->press('delete-task-'.$toDelete->id)
-            ->dontSee($toDeleted->name)
+            ->dontSee($toDelete->name)
             ->notSeeInDatabase('tasks', [ 'name' => $toDelete->name]);
-               
     }
-
 }

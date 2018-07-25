@@ -1,5 +1,7 @@
 <?php
 
+use App\Property as Property;
+
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
     /**
@@ -8,12 +10,17 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
      * @var string
      */
     protected $baseUrl = 'http://localhost';
-
+   
     /**
      * Creates the application.
      *
      * @return \Illuminate\Foundation\Application
      */
+    
+    public function __construct($name = null, array $data = array(), $dataName = '') {
+        parent::__construct($name, $data, $dataName);
+    }
+    
     public function createApplication()
     {
         $app = require __DIR__.'/../bootstrap/app.php';
@@ -21,5 +28,6 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
         $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
         return $app;
-    }
+    }   
+            
 }

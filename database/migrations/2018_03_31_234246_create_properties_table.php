@@ -12,7 +12,7 @@ class CreatePropertiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('properties', function (Blueprint $table) {
+        Schema::create('rets_property_listing_test', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -25,6 +25,6 @@ class CreatePropertiesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('properties');
+        Schema::drop('rets_property_listing_test');
     }
 }

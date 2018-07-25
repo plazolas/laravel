@@ -21,7 +21,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         return view('tasks', [
             'tasks' => Task::orderBy('created_at', 'asc')->get()
         ]);
-    }); //->middleware('auth');
+    });
 
     Route::post('/tasks/task', function (Request $request) {
         $validator = Validator::make($request->all(), [
@@ -39,24 +39,23 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         $task->save();
 
         return redirect('/tasks');
-    }); //->middleware('auth');
+    });
 
     Route::delete('tasks/task/{id}', function ($id) {
         Task::findOrFail($id)->delete();
 
         return redirect('/tasks');
-    }); //->middleware('auth');
+    });
     
-    Route::get('/properties', ['uses' => 'Property\PropertyController@index']);
-    Route::post('/properties', ['uses' => 'Property\PropertyController@index']);
-    
-    Route::get('/properties/id/{id}', ['uses' => 'Property\PropertyController@propertyDetails'])->middleware('auth');
+    Route::get('/properties/id/{id}', ['uses' => 'Property\PropertyController@propertyDetails']);
 });
 
 Route::auth();
 
 Route::get('/', ['uses' => 'Property\PropertyController@index']);
 Route::get('/home', ['uses' => 'Property\PropertyController@index']);
+
+Route::post('/properties', ['uses' => 'Property\PropertyController@index']);
 
 Route::post('/ajax/get_county', ['uses' => 'Ajax\AjaxController@get_county']);
 Route::get('/ajax/get_county', ['uses' => 'Ajax\AjaxController@get_county']);
