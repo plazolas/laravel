@@ -53,8 +53,12 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 Route::auth();
 
 Route::get('/', ['uses' => 'Property\PropertyController@index']);
-Route::get('/home', ['uses' => 'Property\PropertyController@index']);
+Route::post('/', ['uses' => 'Property\PropertyController@index']);
 
+Route::get('/home', ['uses' => 'Property\PropertyController@index']);
+Route::post('/home', ['uses' => 'Property\PropertyController@index']);
+
+Route::get('/properties', ['uses' => 'Property\PropertyController@index']);
 Route::post('/properties', ['uses' => 'Property\PropertyController@index']);
 
 Route::post('/ajax/get_county', ['uses' => 'Ajax\AjaxController@get_county']);
