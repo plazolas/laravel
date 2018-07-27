@@ -55,10 +55,10 @@ return [
         'mysql' => [
             /*********** -oz
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'resuelve.db.5478025.hostedresource.com'),
-            'database'  => env('DB_DATABASE', 'resuelve'),
-            'username'  => env('DB_USERNAME', 'resuleve'),
-            'password'  => env('DB_PASSWORD', 'Y6u7i8O9@'),
+            'host'      => env('DB_HOST', 'some.db.12345.host.com'),
+            'database'  => env('DB_DATABASE', 'somedatabase'),
+            'username'  => env('DB_USERNAME', 'someuser'),
+            'password'  => env('DB_PASSWORD', 'somepass'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
