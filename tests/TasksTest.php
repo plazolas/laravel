@@ -2,6 +2,8 @@
 use App\Task;
 use App\User;
 
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -73,5 +75,28 @@ class TasksTest extends TestCase
             ->press('delete-task-'.$toDelete->id)
             ->dontSee($toDelete->name)
             ->notSeeInDatabase('tasks', [ 'name' => $toDelete->name]);
+    }
+    
+    public function test_insert_tables() {
+       
+        DB::table('users')->insert([
+            'name' => 'registered',
+            'email' => 'registered@laravelrealstate.com',
+            'role' => 'registered',
+            'password' => bcrypt('registered'),
+            'role' => 'registered'
+        ]);
+        
+        DB::statement("
+          INSERT INTO `tasks` (`id`, `name`, `created_at`, `updated_at`) VALUES
+            (0, 'Git pull laravel repository', '".date('Y-m-d h:i:s')."', '".date('Y-m-d h:i:s')."'),
+            (0, 'run composer on app root directory', '".date('Y-m-d h:i:s')."', '".date('Y-m-d h:i:s')."'),
+            (0, 'create MySQL Database', '".date('Y-m-d h:i:s')."', '".date('Y-m-d h:i:s')."'),
+            (0, 'Update database cofig file for your MySQL credential', '".date('Y-m-d h:i:s')."', '".date('Y-m-d h:i:s')."'),
+            (0, 'Login as admin and change password', '".date('Y-m-d h:i:s')."', '".date('Y-m-d h:i:s')."')  
+        ");
+        
+        $this->seeInDatabase('users', ['email' =>  'registered@laravelrealstate.com']);
+        $this->seeInDatabase('tasks', ['name' =>  'Login as admin and change password']);
     }
 }

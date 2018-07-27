@@ -12,10 +12,18 @@
 */
 
 use App\Task;
-use App\Property;
 use Illuminate\Http\Request;
 
-Route::group(['middleware' => ['web', 'auth']], function () {
+Route::group(['middleware' => ['auth']], function () {
+    
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect('/');
+    });
+    Route::post('/logout', function () {
+        
+        return redirect('/');
+    });
     
     Route::get('/tasks', function () {
         return view('tasks', [

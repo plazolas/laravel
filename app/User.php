@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Task;
+use App\Activity;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -13,7 +14,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'password'
+        'name', 'email', 'phone', 'role', 'password'
     ];
 
     /**
@@ -31,5 +32,10 @@ class User extends Authenticatable
     public function tasks()
     {
         return $this->hasMany(Task::class);
+    }
+    
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
     }
 }
