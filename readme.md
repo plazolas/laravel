@@ -13,9 +13,11 @@
     php artisan serve
 
 ## Demo Website : 
-
+<table>
+<tr><td>
     <a href="http://abrelamente.com/laravel/public">Waltz Realty</a>
-
+</td></tr>
+</table>
 ## Contact me when you are ready to:
 
     Integrate FLEX MLS or other real state service account in real time.
