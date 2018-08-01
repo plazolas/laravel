@@ -14,10 +14,12 @@ class Property extends Model
      */
     protected $table = 'rets_property_listing_test';
     
+    /**
+     * Get the photos for this property.
+     */
     public function photos()
     {
-        //return $this->hasMany('Larashop\Models\Property', 'foreign_key', 'local_key');
-        //return $this->hasMany(PropertyPhotos::class,'LIST_3','property_id');
+        //return $this->hasMany('Models\Property', 'foreign_key', 'local_key');
         return $this->hasMany(PropertyPhotos::class,'property_id','LIST_1');
     }
 }

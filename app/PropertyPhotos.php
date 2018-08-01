@@ -18,6 +18,6 @@ class PropertyPhotos extends Model
     {
         //return $this->hasMany('Larashop\Models\Property', 'foreign_key', 'local_key');
         //return $this->hasMany(PropertyPhotos::class,'LIST_3','property_id');
-        return $this->belongsTo(Property::class,'property_id');
+        return $this->belongsTo(Property::class);
     }
 }

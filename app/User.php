@@ -4,6 +4,7 @@ namespace App;
 
 use App\Task;
 use App\Activity;
+use App\Client;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -14,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'role', 'password'
+        'client_id','name', 'email', 'phone', 'role', 'password'
     ];
 
     /**
@@ -23,8 +24,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token'
     ];
+    
+    /**
+     * Get the client for this user.
+     */
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
 
     /**
      * Get all of the tasks for the user.
@@ -34,6 +43,9 @@ class User extends Authenticatable
         return $this->hasMany(Task::class);
     }
     
+    /**
+     * Get all of the activities for the user.
+     */
     public function activities()
     {
         return $this->hasMany(Activity::class);

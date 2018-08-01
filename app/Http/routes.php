@@ -12,6 +12,7 @@
 */
 
 use App\Task;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 Route::group(['middleware' => ['auth']], function () {
@@ -21,39 +22,16 @@ Route::group(['middleware' => ['auth']], function () {
         return redirect('/');
     });
     Route::post('/logout', function () {
-        
         return redirect('/');
     });
-    
-    Route::get('/tasks', function () {
-        return view('tasks', [
-            'tasks' => Task::orderBy('created_at', 'asc')->get()
-        ]);
-    });
-
-    Route::post('/tasks/task', function (Request $request) {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('/tasks')
-                ->withInput()
-                ->withErrors($validator);
-        }
-
-        $task = new Task;
-        $task->name = $request->name;
-        $task->save();
-
-        return redirect('/tasks');
-    });
-
-    Route::delete('tasks/task/{id}', function ($id) {
-        Task::findOrFail($id)->delete();
-
-        return redirect('/tasks');
-    });
+ 
+    Route::get('/tasks', ['uses' => 'TaskController@index']);
+    Route::post('/tasks/task', ['uses' => 'TaskController@store']);
+    Route::delete('/tasks/task/{id}', ['uses' => 'TaskController@destroy']);
+    //Route::delete('tasks/task/{id}', function ($id) {
+    //    Task::findOrFail($id)->delete();
+    //    return redirect('/tasks');
+    //});
     
     Route::get('/properties/id/{id}', ['uses' => 'Property\PropertyController@propertyDetails']);
 });

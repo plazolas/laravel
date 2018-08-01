@@ -260,7 +260,7 @@ class PropertyRepository {
 
         $order = " ORDER BY " . $order_field;
 
-        $limit = '';
+        $limit = ' LIMIT 3000 ';
         if ($similar > 0) {
             $limit = " LIMIT 3";
             $order = " ORDER BY RAND() ";

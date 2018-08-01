@@ -14,7 +14,7 @@ class CreatePropertyPhotosTable extends Migration
     {
         Schema::create('rets_property_photos_test', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('photo_id');
+            $table->unsignedInteger('photo_id');
             $table->char('property_id', 255);
             $table->char('photo_thumb', 255);
             $table->char('photo_full', 255);
@@ -22,6 +22,7 @@ class CreatePropertyPhotosTable extends Migration
             $table->timestamps();
             
             $table->index(['property_id']);
+            $table->foreign('property_id')->references('id')->on('rets_property_listing_test');
         });
     }
 

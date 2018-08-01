@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePropertiesTable extends Migration
+class CreateClientTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,12 @@ class CreatePropertiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('rets_property_listing_test', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
-            // Depends on you real state MLS system
+            $table->string('name');
+            $table->string('logo');
+            $table->string('host');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreatePropertiesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('rets_property_listing_test');
+        Schema::drop('clients');
     }
 }
